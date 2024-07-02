@@ -13,7 +13,7 @@ function planningsHandler(plannings){
      var content = plannings.map(function (planning){
          console.log(planning.titulo);
          return (
-             <div key={i++}> {i + 1} - {planning.titulo} - {planning.equipe} - {planning.status}</div>
+             <div className="plannings-content" key={i++}> {i + 1} - {planning.titulo} - {planning.equipe} - {planning.status}</div>
          );
      });
 
