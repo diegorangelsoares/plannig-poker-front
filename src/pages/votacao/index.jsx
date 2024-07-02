@@ -27,8 +27,8 @@ export function Votacao(){
     useEffect(function (){
         axios.get(BACKEND_URL + "/api/v1/votacao/historia/1/final")
             .then(function (response){
-                console.log(response.data.content)
-                setVotos(votosHandler(response.data.content));
+                console.log(response.data)
+                setVotos(votosHandler(response.data));
             })
             .catch(function (error){
                 console.log(error);
