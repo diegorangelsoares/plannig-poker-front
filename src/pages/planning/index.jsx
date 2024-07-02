@@ -1,9 +1,9 @@
 import "./style.css";
 import {BACKEND_URL} from "../../config";
 import axios from "axios";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
-function planningHandler(plannings){
+function planningsHandler(plannings){
      if (!Array.isArray(plannings)){
          return plannings;
      }
@@ -11,8 +11,9 @@ function planningHandler(plannings){
      var i = 0;
 
      var content = plannings.map(function (planning){
+         console.log(planning.titulo);
          return (
-             <div key={i++} > {planning.titulo}</div>
+             <div key={i++}> {i + 1} - {planning.titulo}</div>
          );
      });
 
@@ -21,24 +22,26 @@ function planningHandler(plannings){
 
 export function Planning(){
 
-    const [plannings, setPlannings] = useState([]);
+    const [plannings, setPlannings] = useState("Nada a mostrar");
 
-    axios.get(BACKEND_URL + "/api/v1/planning/102")
-    .then(function (response){
-        console.log("RODANDO");
-        setPlannings(planningHandler(response.data));
-    })
-    .catch(function (error){
-        console.log(error);
-    })
-    .finally(function (){
-        console.log("finally")
-    });
+    useEffect(function (){
+        axios.get(BACKEND_URL + "/api/v1/planning/all?page=0&size=20&sort=id")
+        .then(function (response){
+            // console.log(response.data.content)
+            setPlannings(planningsHandler(response.data.content));
+        })
+        .catch(function (error){
+            console.log(error);
+        })
+        .finally(function (){
+            console.log("finally")
+        });
+    },[]);
 
     return(
         <div className="content">
             <h1>PLANNING</h1>
-            <div> CONTEUDO </div>
+            {plannings}
         </div>
     );
 
