@@ -1,9 +1,9 @@
 import "./style.css";
 
-export function Home(){
+export function Votacao(){
     return(
         <div className="content">
-            <h1>HOME</h1>
+            <h1>VOTAÇÃO</h1>
             <div> CONTEUDO </div>
         </div>
     );

@@ -5,6 +5,9 @@ import {Mainbody} from "./components/mainbody";
 import {Footer} from "./components/footer";
 import {Menu} from "./components/menu";
 import {Home} from "./pages/home";
+import {Planning} from "./pages/planning";
+import {Historias} from "./pages/historias";
+import {Votacao} from "./pages/votacao";
 
 function App() {
   return (
@@ -13,7 +16,10 @@ function App() {
         <Topbanner/>
         <Mainbody>
             <Menu/>
-            <Home></Home>
+            {/*<Home/>*/}
+            {/*<Planning/>*/}
+            {/*<Historias/>*/}
+            <Votacao/>
         </Mainbody>
         <Footer/>
     </>
