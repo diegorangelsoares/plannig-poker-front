@@ -23,10 +23,6 @@ function App() {
                 <Route path="/historias" element={<Historias/>}/>
                 <Route path="/votacao" element={<Votacao/>}/>
             </Routes>
-            {/*<Home/>*/}
-            {/*<Planning/>*/}
-            {/*<Historias/>*/}
-            {/*<Votacao/>*/}
         </Mainbody>
         <Footer/>
     </>
