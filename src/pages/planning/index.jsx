@@ -14,7 +14,12 @@ function planningsHandler(plannings){
      var content = plannings.map(function (planning){
          console.log(planning.titulo);
          return (
-             <Planningcard key={i++} />
+             <Planningcard key={i++}
+                           equipe={planning.equipe}
+                           titulo={planning.titulo}
+                           observacao={planning.observacao}
+                           status={planning.status}
+             />
              // <div className="plannings-content" key={i++}> {i + 1} - {planning.titulo} - {planning.equipe} - {planning.status}</div>
          );
      });

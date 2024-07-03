@@ -11,7 +11,7 @@ function votosHandler(votos){
     var i = 0;
 
     var content = votos.map(function (voto){
-        console.log(voto.votante);
+        // console.log(voto.votante);
         return (
             <div className="votos-content" key={i++}> {i + 1} - {voto.votante} - {voto.orcamento}</div>
         );
@@ -27,14 +27,14 @@ export function Votacao(){
     useEffect(function (){
         axios.get(BACKEND_URL + "/api/v1/votacao/historia/1/final")
             .then(function (response){
-                console.log(response.data)
+                // console.log(response.data)
                 setVotos(votosHandler(response.data));
             })
             .catch(function (error){
                 console.log(error);
             })
             .finally(function (){
-                console.log("finally")
+                // console.log("finally")
             });
     },[]);
 
