@@ -6,10 +6,10 @@ export function Planningcard(props){
 
     return (
         <div className="planningcard">
-            <h2>Equipe: {props.equipe}</h2>
-            <div>Título: {props.titulo}</div>
-            <div>Obs.: {props.observacao}</div>
-            <div>Status: {props.status}</div>
+            <h2><b>Equipe: </b>{props.equipe}</h2>
+            <div><b>Título: </b>{props.titulo}</div>
+            <div><b>Obs.: </b>{props.observacao}</div>
+            <div><b>Status: </b>{props.status}</div>
         </div>
     );
 }
