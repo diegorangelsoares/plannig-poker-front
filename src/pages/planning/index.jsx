@@ -43,7 +43,9 @@ export function Planning(){
     return(
         <div className="content">
             <h1>PLANNINGS</h1>
-            {plannings}
+            <div className="cards">
+                {plannings}
+            </div>
         </div>
     );
 
