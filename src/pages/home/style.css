@@ -14,12 +14,17 @@ p.home-form{
     display: flex;
 }
 
+
+/*<div><input type="text" className="home-form"*/
+
 input.home-form{
     padding: 5px;
     color: #707070;
     font-size: 14px;
     border-color: #707070;
     border-width: 1px;
+    margin: 0px 10px;
+
 }
 
 .home-form-icon{
