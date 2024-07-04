@@ -41,7 +41,7 @@ export function Planning(){
             console.log(error);
         })
         .finally(function (){
-            console.log("finally")
+            // console.log("finally")
         });
     },[]);
 

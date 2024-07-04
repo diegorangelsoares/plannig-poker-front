@@ -1,0 +1,33 @@
+div.historiacard {
+    display: flex;
+    /*font-size: 50px;*/
+    flex-direction: column;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    margin: 10px;
+    padding: 10px;
+    padding-bottom: 20px;
+    width: 300px;
+}
+
+div.historiacard-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+div.historiacard-grade{
+    font-size: 45px;
+    font-weight: bold;
+    color: #4EBC30;
+    margin: 5px;
+}
+
+h2.historiacard{
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 25px;
+}
