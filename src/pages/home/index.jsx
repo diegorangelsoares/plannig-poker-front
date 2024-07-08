@@ -45,6 +45,8 @@ export function Home() {
                 <h3 className="home-form">Histórias: </h3>
 
                 {createHistoriaInputs(historiasSize, setHistoriasSize)}
+
+                <p className="home-form"><input type="submit" className="home-form-button" value="Cadastrar nova história" /></p>
             </div>
         </div>
     );
