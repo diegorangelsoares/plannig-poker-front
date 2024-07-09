@@ -27,6 +27,44 @@ function createHistoriaInputs(historiasSize, setHistoriasSize) {
     return content;
 }
 
+
+/*
+{
+  "titulo": "Planning Poker para orçamentos",
+  "observacao": "Observacao do planning",
+  "equipe": "HPay",
+  "historias": [
+    {
+      "descricao": "Descricao da historia",
+      "card": "HPAY-1",
+      "idPlanning": 1,
+      "orcamento": 0,
+      "votos": [
+        {
+          "votante": "Nome da pessoa que esta votando",
+          "orcamento": 1,
+          "idHistoria": 1
+        }
+      ]
+    }
+  ]
+}
+
+ */
+
+function formDataToJsonMapper(titulo, observacao, equipe, historias){
+    let formatedData = {
+        titulo: titulo,
+        observacao: observacao,
+        equipe: equipe,
+        historias : historias.map(descricao => {
+            return {descricao: descricao}
+        })
+    };
+
+    return JSON.stringify(formatedData)
+}
+
 function formHandle(e){
     e. preventDefault();
     // console.log(e.target.equipe.value);
@@ -35,11 +73,13 @@ function formHandle(e){
     const observacao = e.target.observacao.value;
     const equipe = e.target.equipe.value;
 
-    const historias = Array.from(e.target.descricao).map((descricao) => descricao.value);
-    console.log(titulo);
-    console.log(observacao);
-    console.log(equipe);
-    console.log(historias);
+    const historias = Array.from(e.target.descricao).map(descricao => descricao.value);
+    //const descricoes = Array.from(e.target.descricao).map((descricao) => descricao.value);
+    // console.log(titulo);
+    // console.log(observacao);
+    // console.log(equipe);
+    // console.log(historias);
+    console.log(formDataToJsonMapper(titulo, observacao, equipe, historias));
 
 }
 
