@@ -67,32 +67,41 @@ function formDataToJsonMapper(titulo, observacao, equipe, historias){
     return JSON.stringify(formatedData)
 }
 
-async function formHandle(e){
-    e. preventDefault();
-    //Coletando os dados da planning
-    const titulo = e.target.titulo.value;
-    const observacao = e.target.observacao.value;
-    const equipe = e.target.equipe.value;
+async function formHandle(event, setMessage){
 
-    const historias = Array.from(e.target.descricao).map(descricao => descricao.value);
+    event. preventDefault();
+    //Coletando os dados da planning
+    const titulo = event.target.titulo.value;
+    const observacao = event.target.observacao.value;
+    const equipe = event.target.equipe.value;
+
+    const historias = Array.from(event.target.descricao).map(descricao => descricao.value);
 
     const jsonData = formDataToJsonMapper(titulo, observacao, equipe, historias);
 
     const axiosConfig = {headers: {'Content-Type': 'application/json'}};
 
-    await axios.post(BACKEND_URL + "/api/v1/planning", jsonData, axiosConfig);
+    try{
+        await axios.post(BACKEND_URL + "/api/v1/planning", jsonData, axiosConfig);
+        alert("Deu certo!")
+        setMessage("Planning cadastrando com Sucesso!")
+    }catch (error) {
+        setMessage("Erro ao cadastrar a planning: Error: " + error.message);
+    }
 
 }
 
 export function Home() {
 
     const [historiasSize, setHistoriasSize] = useState(1);
+    const [submitMessage, setSubmitMessage] = useState("");
 
     return (
         <div className="content">
             <h1>HOME</h1>
+            {submitMessage}
             <div className="home-form">
-                <form onSubmit={async (e) => await formHandle(e)}>
+                <form onSubmit={async (e) => await formHandle(e, setSubmitMessage)}>
                     <h3 className="home-form">Cadastrar Planning: </h3>
                     <p className="home-form"><input className="home-form" size={40} name="titulo" type="text"
                                                     placeholder="Titulo"></input></p>
