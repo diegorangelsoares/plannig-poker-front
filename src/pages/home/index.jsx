@@ -15,11 +15,11 @@ function createHistoriaInputs(historiasSize, setHistoriasSize) {
 
     for (var i = 0; i < historiasSize; i++) {
         content.push(
-            <p className="home-form">
-                <div><input type="text" className="home-form" size={40} placeholder="Descricao"/></div>
-                <div><input type="text" className="home-form" size={15} placeholder="Card"/></div>
-                <div><PlusIcon size={25} className="home-form-icon" onClick={()=>setHistoriasSize(historiasSize+1)}/></div>
-                <div><MinusIcon size={25} className="home-form-icon" onClick={()=>decreaseHistoriaSize(historiasSize, setHistoriasSize)}/></div>
+            <p className="home-form" key={i}>
+                <input type="text" className="home-form" size={40} placeholder="Descricao"/>
+                <input type="text" className="home-form" size={15} placeholder="Card"/>
+                <PlusIcon size={25} className="home-form-icon" onClick={()=>setHistoriasSize(historiasSize+1)}/>
+                <MinusIcon size={25} className="home-form-icon" onClick={()=>decreaseHistoriaSize(historiasSize, setHistoriasSize)}/>
             </p>
         )
     }
