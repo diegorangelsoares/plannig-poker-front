@@ -2,6 +2,8 @@ import "./style.css";
 import { BsFilePlusFill as PlusIcon} from "react-icons/bs";
 import { BsFileMinusFill as MinusIcon} from "react-icons/bs";
 import {useState} from "react";
+import axios from "axios";
+import {BACKEND_URL} from "../../config";
 
 
 function decreaseHistoriaSize(historiasSize, setHistoriasSize){
@@ -27,7 +29,7 @@ function createHistoriaInputs(historiasSize, setHistoriasSize) {
     return content;
 }
 
-
+//modelo do json
 /*
 {
   "titulo": "Planning Poker para orçamentos",
@@ -65,21 +67,20 @@ function formDataToJsonMapper(titulo, observacao, equipe, historias){
     return JSON.stringify(formatedData)
 }
 
-function formHandle(e){
+async function formHandle(e){
     e. preventDefault();
-    // console.log(e.target.equipe.value);
     //Coletando os dados da planning
     const titulo = e.target.titulo.value;
     const observacao = e.target.observacao.value;
     const equipe = e.target.equipe.value;
 
     const historias = Array.from(e.target.descricao).map(descricao => descricao.value);
-    //const descricoes = Array.from(e.target.descricao).map((descricao) => descricao.value);
-    // console.log(titulo);
-    // console.log(observacao);
-    // console.log(equipe);
-    // console.log(historias);
-    console.log(formDataToJsonMapper(titulo, observacao, equipe, historias));
+
+    const jsonData = formDataToJsonMapper(titulo, observacao, equipe, historias);
+
+    const axiosConfig = {headers: {'Content-Type': 'application/json'}};
+
+    await axios.post(BACKEND_URL + "/api/v1/planning", jsonData, axiosConfig);
 
 }
 
@@ -91,7 +92,7 @@ export function Home() {
         <div className="content">
             <h1>HOME</h1>
             <div className="home-form">
-                <form onSubmit={function (e){formHandle(e)}}>
+                <form onSubmit={async (e) => await formHandle(e)}>
                     <h3 className="home-form">Cadastrar Planning: </h3>
                     <p className="home-form"><input className="home-form" size={40} name="titulo" type="text"
                                                     placeholder="Titulo"></input></p>
