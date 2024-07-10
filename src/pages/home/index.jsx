@@ -78,13 +78,13 @@ async function formHandle(event, setMessage){
 
     const historias = Array.from(event.target.descricao).map(descricao => descricao.value);
 
-    console.log(historias);
+    // console.log(historias);
 
     const jsonData = formDataToJsonMapper(titulo, observacao, equipe, historias);
 
     const axiosConfig = {headers: {'Content-Type': 'application/json'}};
 
-    console.log(jsonData);
+    // console.log(jsonData);
 
     try{
         await axios.post(BACKEND_URL + "/api/v1/planning", jsonData, axiosConfig);

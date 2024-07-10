@@ -2,7 +2,7 @@ import "./style.css";
 
 export function Historiacard(props){
 
-    console.log(props);
+    // console.log(props);
 
     return (
         <div className="historiacard">
