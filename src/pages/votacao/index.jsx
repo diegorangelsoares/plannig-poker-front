@@ -28,8 +28,9 @@ export function Votacao(){
         axios.get(BACKEND_URL + "/api/v1/votacao/historia/1/final")
             .then(function (response){
                 // console.log(response.data)
-                // if (response.data == "")
+                // if (response.data = "")
                 //     return;
+
                 setVotos(votosHandler(response.data));
             })
             .catch(function (error){

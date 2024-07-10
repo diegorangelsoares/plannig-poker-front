@@ -90,13 +90,13 @@ async function formHandle(event, setMessage){
         await axios.post(BACKEND_URL + "/api/v1/planning", jsonData, axiosConfig);
 
         const message = "Planning cadastrando com Sucesso!";
-        const title = "Cadastrado com Sucesso!"
+        const title = "Cadastrado com Sucesso!";
 
         setMessage(<Message title={title} message={message} type={MESSAGE_TYPE.SUCCESS} />);
     }catch (error) {
 
         const message = error.message;
-        const title = "Erro no cadastro!"
+        const title = "Erro no cadastro!";
 
         setMessage(<Message title={title} message={message} type={MESSAGE_TYPE.ERROR} />);
     }
