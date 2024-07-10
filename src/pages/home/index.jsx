@@ -70,15 +70,19 @@ function formDataToJsonMapper(titulo, observacao, equipe, historias){
 
 async function formHandle(event, setMessage){
 
-    event. preventDefault();
+    event.preventDefault();
     //Coletando os dados da planning
     const titulo = event.target.titulo.value;
     const observacao = event.target.observacao.value;
     const equipe = event.target.equipe.value;
 
-    const historias = Array.from(event.target.descricao).map(descricao => descricao.value);
+    //console.log(event.target.descricao.value);
 
-    // console.log(historias);
+    const historias = Array
+                                .from(event.target.descricao)
+                                .map(descricao => descricao.value);
+
+    console.log(historias);
 
     const jsonData = formDataToJsonMapper(titulo, observacao, equipe, historias);
 
