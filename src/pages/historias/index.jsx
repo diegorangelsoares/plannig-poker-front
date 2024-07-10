@@ -47,8 +47,8 @@ export function Historias(){
         axios.get(BACKEND_URL + "/api/v1/historia/all?page=0&size=20&sort=id")
             .then(function (response){
                 // console.log(response.data.content)
-                // if (response.data == "")
-                //     return;
+                if (response.data == "")
+                    return;
                 setHistorias(historiasHandler(response.data.content));
             })
             .catch(function (error){
