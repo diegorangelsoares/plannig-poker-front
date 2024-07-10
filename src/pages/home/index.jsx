@@ -4,6 +4,7 @@ import { BsFileMinusFill as MinusIcon} from "react-icons/bs";
 import {useState} from "react";
 import axios from "axios";
 import {BACKEND_URL} from "../../config";
+import {Message, MESSAGE_TYPE} from "../../components/message";
 
 
 function decreaseHistoriaSize(historiasSize, setHistoriasSize){
@@ -77,16 +78,27 @@ async function formHandle(event, setMessage){
 
     const historias = Array.from(event.target.descricao).map(descricao => descricao.value);
 
+    console.log(historias);
+
     const jsonData = formDataToJsonMapper(titulo, observacao, equipe, historias);
 
     const axiosConfig = {headers: {'Content-Type': 'application/json'}};
 
+    console.log(jsonData);
+
     try{
         await axios.post(BACKEND_URL + "/api/v1/planning", jsonData, axiosConfig);
-        alert("Deu certo!")
-        setMessage("Planning cadastrando com Sucesso!")
+
+        const message = "Planning cadastrando com Sucesso!";
+        const title = "Cadastrado com Sucesso!"
+
+        setMessage(<Message title={title} message={message} type={MESSAGE_TYPE.SUCCESS} />);
     }catch (error) {
-        setMessage("Erro ao cadastrar a planning: Error: " + error.message);
+
+        const message = error.message;
+        const title = "Erro no cadastro!"
+
+        setMessage(<Message title={title} message={message} type={MESSAGE_TYPE.ERROR} />);
     }
 
 }

@@ -35,6 +35,8 @@ export function Planning(){
         axios.get(BACKEND_URL + "/api/v1/planning/all?page=0&size=20&sort=id")
         .then(function (response){
             // console.log(response.data.content)
+            // if (response.data == "")
+            //     return;
             setPlannings(planningsHandler(response.data.content));
         })
         .catch(function (error){
